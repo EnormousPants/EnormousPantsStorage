@@ -1,6 +1,6 @@
 package util;
 
-public class QGPSet {
+public class QGPSet {//返回输入字符串对应的最大保质期
     public static int qgpSet(String Name){
         if("卫尤辣条".equals(Name))
             return 180;

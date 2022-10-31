@@ -1,10 +1,10 @@
 package entity;
 
-public class Goods {
-    private  int id;
+public class Goods {//实体类，定义实体变量以及对应的Setter、Getter方法
+    private  int id;//货物id
     private String Name;//货物名称
     private String Date;//入库日期
-    private int QGP;//保质期
+    private int QGP;//剩余保质期
 
     public int getId() {
         return id;
