@@ -5,14 +5,14 @@
 package SWindows;
 
 import Dao.GoodsDao;
-import com.sun.net.httpserver.Authenticator;
 import util.DateCalc;
 import util.QGPSet;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * @author B20040628梅从尧
