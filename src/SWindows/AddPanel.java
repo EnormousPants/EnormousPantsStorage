@@ -24,16 +24,18 @@ public class AddPanel extends JFrame {
 
     private void okButtonMouseClicked(MouseEvent e) {
         GoodsDao dao = new GoodsDao();
-        String Name = (String) comboBox1.getSelectedItem();
-        String Date = textField2.getText();
-        QGPSet QgpSet = new QGPSet();
-        int MQGP= QgpSet.qgpSet(Name);
+        String name = (String) comboBox1.getSelectedItem();
+        String date = textField2.getText();
+        QGPSet qgpSet = new QGPSet();
+        int mqgp= qgpSet.qgpSet(name);
         DateCalc dateCalc= new DateCalc();
-        int QGP=dateCalc.Calc(Date,MQGP);
-        int flag=dao.add(Name,Date,QGP);
-        if(flag==1)
+        int qgp=dateCalc.Calc(date,mqgp);
+        int flag=dao.add(name,date,qgp);
+        if (flag == 1) {
             new SuccessPanel();
-        else new FailPanel();
+        } else {
+            new FailPanel();
+        }
         this.dispose();
     }
 

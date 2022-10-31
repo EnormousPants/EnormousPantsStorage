@@ -21,8 +21,8 @@ public class OutPanel extends JFrame {
 
     private void okButtonMouseClicked(MouseEvent e) {
         GoodsDao dao = new GoodsDao();
-        String Name = (String) comboBox1.getSelectedItem();
-        int flag = dao.Out(Name);
+        String name = (String) comboBox1.getSelectedItem();
+        int flag = dao.Out(name);
         if(flag==1)
             new SuccessPanel();
         else new FailPanel();

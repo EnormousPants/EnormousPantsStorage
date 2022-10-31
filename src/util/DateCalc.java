@@ -5,9 +5,9 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class DateCalc {//计算剩余保质期方法
-    public static int Calc(String Date,int MQGP){
+    public static int Calc(String date,int MQGP){
         int QGP;
-        LocalDate parse = LocalDate.parse(Date);//将输入的日期字符串转为yyyy-MM-dd格式的LocalDate类
+        LocalDate parse = LocalDate.parse(date);//将输入的日期字符串转为yyyy-MM-dd格式的LocalDate类
         LocalDate localdate=LocalDate.now();//以yyyy-MM-dd格式获取LocalDate类的今日时间
         long between = ChronoUnit.DAYS.between(parse,localdate);//计算从录入日期到今天间隔多少天
         int x=(int)between;

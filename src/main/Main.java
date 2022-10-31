@@ -17,8 +17,8 @@ public class Main {//使用dos窗口进行的简单管理系统
             System.out.println("保质期信息已自动更新");
         else System.out.println("保质期信息自动更新失败");//自动更新
         dao.Alert();//过期警告
-        String Id,Name,Date;
-        int id = 0,QGP=0,MQGP=0;
+        String Id,name,date;
+        int id = 0,qgp=0,mqgp=0;
         Scanner request = new Scanner(System.in);//生成Scanner读取键盘输入
         int flag = 0;//生成操作数标记
         System.out.println("————————————————欢迎使用货物管理系统————————————————");
@@ -34,14 +34,14 @@ public class Main {//使用dos窗口进行的简单管理系统
         flag = request.nextInt();//读取操作数
         if(flag == 1 ){//录入货物信息
             System.out.println("请输入货物名称");
-            Name =request.next();//获取货物名称。这一步是不严谨的，因为没有设置对于不包含在数据库中的货物名的检查与纠错功能
-            QGPSet QgpSet = new QGPSet();
-            MQGP= QgpSet.qgpSet(Name);//读取对应商品的最大保质日期
+            name =request.next();//获取货物名称。这一步是不严谨的，因为没有设置对于不包含在数据库中的货物名的检查与纠错功能
+            QGPSet qgpSet = new QGPSet();
+            mqgp= qgpSet.qgpSet(name);//读取对应商品的最大保质日期
             System.out.println("请按yyyy-MM-dd格式输入录入日期");
-            Date =request.next();//获取录入日期
+            date =request.next();//获取录入日期
             DateCalc dateCalc= new DateCalc();
-            QGP=dateCalc.Calc(Date,MQGP);//根据录入日期和最大保质期计算剩余保质期
-            flag=dao.add(Name,Date,QGP);//调用录入函数
+            qgp=dateCalc.Calc(date,mqgp);//根据录入日期和最大保质期计算剩余保质期
+            flag=dao.add(name,date,qgp);//调用录入函数
             if(flag==1)
                 System.out.println("信息录入成功！");
             else
@@ -70,8 +70,8 @@ public class Main {//使用dos窗口进行的简单管理系统
             System.out.println("信息已全部显示");
         }else if(flag==5) {//查询货物信息-4
             System.out.println("请输入欲查询的货物类名");
-            Name = request.next();
-            List<Goods> list =dao.QueryByName(Name);//调用指定货物种类后按录入顺序排序的货物信息列表
+            name = request.next();
+            List<Goods> list =dao.QueryByName(name);//调用指定货物种类后按录入顺序排序的货物信息列表
             System.out.println("编号 商品名称    录入日期        剩余保质期");
             for(Goods goods:list){
                 System.out.println(goods.getId()+"    "+goods.getName()+"    "+goods.getDate()+"录入 保质期还有"+goods.getQGP()+"天");
@@ -89,22 +89,22 @@ public class Main {//使用dos窗口进行的简单管理系统
             System.out.println("请输入欲更新货物的id编号");
             Id = request.next();//获取字符串形式的Id
             System.out.println("请输入货物名称");
-            Name =request.next();//获取货物名称，这一步也是不严谨的
+            name =request.next();//获取货物名称，这一步也是不严谨的
             QGPSet QgpSet = new QGPSet();
-            MQGP= QgpSet.qgpSet(Name);//计算最大保质期
+            mqgp= QgpSet.qgpSet(name);//计算最大保质期
             System.out.println("请按yyyy-MM-dd格式输入录入日期");
-            Date =request.next();//获取录入日期
+            date =request.next();//获取录入日期
             DateCalc dateCalc= new DateCalc();
-            QGP=dateCalc.Calc(Date,MQGP);//计算剩余保质期
-            flag=dao.updateBySingle(Id,Name,Date,QGP);//调用更新函数
+            qgp=dateCalc.Calc(date,mqgp);//计算剩余保质期
+            flag=dao.updateBySingle(Id,name,date,qgp);//调用更新函数
             if (flag == 1)
                 System.out.println("信息更新成功！");
             else
                 System.out.println("信息更新失败");
         }else if(flag==8){
             System.out.println("请输入欲出货的货物名称");
-            Name =request.next();//获取货物名称
-            flag=dao.Out(Name);
+            name =request.next();//获取货物名称
+            flag=dao.Out(name);
             if (flag == 1)
                 System.out.println("货物出库成功！");
             else

@@ -14,11 +14,10 @@ public class JdbcUtil {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("Driver接口实现类被注册了");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-        System.out.println("Driver接口实现类被注册了");
     }
 
     //封装Connection对象创建细节 不需要考虑使用对象创建细节

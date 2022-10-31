@@ -37,17 +37,24 @@ public class TestMenu extends JFrame {
     }
 
     private void button4MouseClicked(MouseEvent e) {
-        String Method = (String) comboBox1.getSelectedItem();
-        if(Method=="录入顺序"){
-            new QueryAllPanel();
-        }else if (Method=="入库日期") {
-            new QueryDatePanel();
-        }else if (Method=="保质期") {
-            new QueryQGPPanel();
-        }else if (Method=="货物名称") {
-            new QueryNamePanel();
-        }else new FailPanel();
-
+        String method = (String) comboBox1.getSelectedItem();
+        switch (method) {
+            case "录入顺序":
+                new QueryAllPanel();
+                break;
+            case "入库日期":
+                new QueryDatePanel();
+                break;
+            case "保质期":
+                new QueryQGPPanel();
+                break;
+            case "货物名称":
+                new QueryNamePanel();
+                break;
+            default:
+                new FailPanel();
+                break;
+        }
     }
 
     private void button6MouseClicked(MouseEvent e) {
