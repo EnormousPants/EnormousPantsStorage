@@ -140,7 +140,7 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
             DriverManager.registerDriver(driver);
             String url = "jdbc:mysql://127.0.0.1:3306/javademo?serverTimezone=UTC";
             String user = "root";
-            String password = "Myf63500976mcy";
+            String password = "123456";
             conn = DriverManager.getConnection(url, user, password);
             stmt = conn.createStatement();
             String sql = "select id,Name,Date,QGP from Goods" + " ORDER BY Date ASC ";
@@ -172,7 +172,7 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
             DriverManager.registerDriver(driver);
             String url = "jdbc:mysql://127.0.0.1:3306/javademo?serverTimezone=UTC";
             String user = "root";
-            String password = "Myf63500976mcy";
+            String password = "123456";
             conn = DriverManager.getConnection(url, user, password);
             stmt = conn.createStatement();
             String sql = "select id,Name,Date,QGP from Goods" + " ORDER BY Date ASC ";
