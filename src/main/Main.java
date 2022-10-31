@@ -19,7 +19,7 @@ public class Main {//使用dos窗口进行的简单管理系统
         dao.Alert();//过期警告
         String Id,Name,Date;
         int id = 0,QGP=0,MQGP=0;
-        Scanner request = new Scanner(System.in);//生成Scanner读取键盘输入
+        Scanner request = new Scanner(System.in);//生成Scanner读取键盘输入.
         int flag = 0;//生成操作数标记
         System.out.println("————————————————欢迎使用货物管理系统————————————————");
         System.out.println("—————————————————请选择您需要的功能————————————————");
