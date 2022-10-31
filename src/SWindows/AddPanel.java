@@ -23,9 +23,9 @@ public class AddPanel extends JFrame {
     }
 
     private void okButtonMouseClicked(MouseEvent e) {
-        GoodsDao dao = new GoodsDao();
         String name = (String) comboBox1.getSelectedItem();
         String date = textField2.getText();
+        GoodsDao dao = new GoodsDao();
         QGPSet qgpSet = new QGPSet();
         int mqgp= qgpSet.qgpSet(name);
         DateCalc dateCalc= new DateCalc();

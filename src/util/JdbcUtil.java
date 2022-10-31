@@ -23,7 +23,7 @@ public class JdbcUtil {
     //封装Connection对象创建细节 不需要考虑使用对象创建细节
     public  Connection  createCon(){
         try {
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/javademo?serverTimezone=UTC","root","123456");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/javademo?serverTimezone=UTC","root","Myf63500976mcy");
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Connection对象创建失败。。。。。");
