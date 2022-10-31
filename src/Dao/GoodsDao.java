@@ -11,7 +11,7 @@ package Dao;
 
 public class GoodsDao {//负责连接到数据库的数据访问对象方法集
     //录入货物信息
-    public static int add(String name,String date,int QGP){
+    public static int add(String name,String date,int qgp){
         String sql="insert into Goods(Name,Date,QGP) values(?,?,?)";
         JdbcUtil util =new JdbcUtil();
         int result =0;
@@ -19,7 +19,7 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
         try {//获取参数值，按位置对应到sql语句中的“？”字符位置，下同
             ps.setString(1,name);
             ps.setString(2,date);
-            ps.setInt(3,QGP);
+            ps.setInt(3,qgp);
             result=ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -45,16 +45,16 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
         return result;
     }
     //更新货物信息
-    public static int updateBySingle(String id,String Name,String Date,int QGP){
+    public static int updateBySingle(String id,String name,String date,int qgp){
         String sql = "update Goods set Date=?,Name=?,QGP=? where id = ?";
         JdbcUtil util = new JdbcUtil();
         PreparedStatement ps = util.createStatement(sql);
         int result = 0 ;
         try {
             ps.setInt(4, Integer.parseInt(id));
-            ps.setString(2,Name);
-            ps.setString(1,Date);
-            ps.setInt(3,QGP);
+            ps.setString(2,name);
+            ps.setString(1,date);
+            ps.setInt(3,qgp);
             result = ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -65,8 +65,8 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
     }
     //自动更新货物剩余保质期
     public static int AutoUpdate(){
-        String id,Name,Date;
-        int QGP=0,MQGP=0;
+        String id,name,date;
+        int qgp=0,mqgp=0;
         QGPSet QgpSet = new QGPSet();
         DateCalc dateCalc=new DateCalc();
         String sql = "update Goods set QGP=? where id = ?";
@@ -76,13 +76,13 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
         int result=0;
         for(Goods goods:list){
             id=Integer.toString(goods.getId());
-            Name= goods.getName();
-            Date=goods.getDate();
-            MQGP=QgpSet.qgpSet(Name);
-            QGP=dateCalc.Calc(Date,MQGP);//对剩余保质期进行重新计算
+            name= goods.getName();
+            date=goods.getDate();
+            mqgp=QgpSet.qgpSet(name);
+            qgp=dateCalc.Calc(date,mqgp);//对剩余保质期进行重新计算
             try {
                 ps.setInt(2,Integer.parseInt(id)) ;
-                ps.setInt(1,QGP);
+                ps.setInt(1,qgp);
                 result = ps.executeUpdate();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -104,8 +104,8 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
                 int id = rs.getInt("id");
                 String name = rs.getString("Name");
                 String date = rs.getString("Date");
-                int QGP = rs.getInt("QGP");
-                Goods goods = new Goods(id,name,date,QGP);
+                int qgp = rs.getInt("QGP");
+                Goods goods = new Goods(id,name,date,qgp);
                 list.add(goods);
             }
         } catch (SQLException e) {
@@ -147,10 +147,10 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
             rs = stmt.executeQuery(sql);
             while (rs.next()) {//以列名获取数据
                 int id = rs.getInt("id");
-                String Name = rs.getString("Name");
-                String Date = rs.getString("Date");
-                int QGP = rs.getInt("QGP");
-                Goods goods = new Goods(id,Name,Date,QGP);
+                String name = rs.getString("Name");
+                String date = rs.getString("Date");
+                int qgp = rs.getInt("QGP");
+                Goods goods = new Goods(id,name,date,qgp);
                 list.add(goods);
             }
         } catch (Exception e) {
@@ -181,9 +181,9 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
                 int id = rs.getInt("id");
                 String Name = rs.getString("Name");
                 String Date = rs.getString("Date");
-                int QGP = rs.getInt("QGP");
+                int qgp = rs.getInt("QGP");
                 if(Name.equals(Name_1)){//只取出符合需求名称的数据列
-                    Goods goods = new Goods(id,Name,Date,QGP);
+                    Goods goods = new Goods(id,Name,Date,qgp);
                     list.add(goods);
                 }
                 continue;

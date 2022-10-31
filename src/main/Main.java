@@ -17,7 +17,7 @@ public class Main {//使用dos窗口进行的简单管理系统
             System.out.println("保质期信息已自动更新");
         else System.out.println("保质期信息自动更新失败");//自动更新
         dao.Alert();//过期警告
-        String Id,name,date;
+        String id_s,name,date;
         int id = 0,qgp=0,mqgp=0;
         Scanner request = new Scanner(System.in);//生成Scanner读取键盘输入
         int flag = 0;//生成操作数标记
@@ -87,7 +87,7 @@ public class Main {//使用dos窗口进行的简单管理系统
                 System.out.println("信息删除失败");
         }else if(flag==7){//更新货物信息
             System.out.println("请输入欲更新货物的id编号");
-            Id = request.next();//获取字符串形式的Id
+            id_s = request.next();//获取字符串形式的Id
             System.out.println("请输入货物名称");
             name =request.next();//获取货物名称，这一步也是不严谨的
             QGPSet QgpSet = new QGPSet();
@@ -96,7 +96,7 @@ public class Main {//使用dos窗口进行的简单管理系统
             date =request.next();//获取录入日期
             DateCalc dateCalc= new DateCalc();
             qgp=dateCalc.Calc(date,mqgp);//计算剩余保质期
-            flag=dao.updateBySingle(Id,name,date,qgp);//调用更新函数
+            flag=dao.updateBySingle(id_s,name,date,qgp);//调用更新函数
             if (flag == 1)
                 System.out.println("信息更新成功！");
             else
