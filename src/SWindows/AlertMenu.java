@@ -56,11 +56,11 @@ public class AlertMenu extends JFrame {
                 ((GridBagLayout)contentPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 1.0E-4};
 
                 //---- label1 ----
-                label1.setText("\u8b66\u544a\uff1a\u4ee5\u4e0b\u5546\u54c1\u5373\u5c06\u8fc7\u671f\uff01");
+                label1.setText("\u8b66\u544a\uff1a\u4ee5\u4e0b\u5546\u54c1\u5373\u5c06\u6216\u5df2\u7ecf\u8fc7\u671f\uff01");
                 label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 3f));
-                contentPanel.add(label1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                contentPanel.add(label1, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 5, 5), 0, 0));
+                    new Insets(0, 0, 5, 0), 0, 0));
 
                 //======== scrollPane1 ========
                 {
@@ -76,7 +76,6 @@ public class AlertMenu extends JFrame {
                         dtm.addRow(new Object[]{goods.getId(),goods.getName(),goods.getDate(),goods.getQGP()});
                     }
                     scrollPane1.setViewportView(table1);
-
                 }
                 contentPanel.add(scrollPane1, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
