@@ -128,29 +128,20 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
         });
         return list;
     }
-    //按货物录入日期进行查询
-    public static List SortByDate() {//按日期进行排序方法，由于写的最早没有对Jdbc方法进行完整封装，按名称进行排序方法同理
-        JdbcUtil util = new JdbcUtil();
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
+    public static List SortByDate() {//按日期进行排序方法
         List list = new ArrayList<>();
+        JdbcUtil util = new JdbcUtil();
+        String sql = "select id,Name,Date,QGP from Goods" + " ORDER BY Date ASC ";
+        PreparedStatement ps = util.createStatement(sql);
+        ResultSet rs = null;
         try {//未封装的Jdbc语法，下同
-            Driver driver = new com.mysql.cj.jdbc.Driver();
-            DriverManager.registerDriver(driver);
-            String url = "jdbc:mysql://127.0.0.1:3306/javademo?serverTimezone=UTC";
-            String user = "root";
-            String password = "Myf63500976mcy";
-            conn = DriverManager.getConnection(url, user, password);
-            stmt = conn.createStatement();
-            String sql = "select id,Name,Date,QGP from Goods" + " ORDER BY Date ASC ";
-            rs = stmt.executeQuery(sql);
+            rs = ps.executeQuery(sql);
             while (rs.next()) {//以列名获取数据
                 int id = rs.getInt("id");
                 String name = rs.getString("Name");
                 String date = rs.getString("Date");
                 int qgp = rs.getInt("QGP");
-                Goods goods = new Goods(id,name,date,qgp);
+                Goods goods = new Goods(id, name, date, qgp);
                 list.add(goods);
             }
         } catch (Exception e) {
@@ -158,25 +149,17 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
         } finally {
             util.close(rs);
             return list;
-            }
+        }
     }
     //按货物名称进行查询
     public static List QueryByName(String Name_1) {//按名称进行排序方法
-        JdbcUtil util = new JdbcUtil();
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
         List list = new ArrayList<>();
+        JdbcUtil util = new JdbcUtil();
+        String sql = "select id,Name,Date,QGP from Goods" + " ORDER BY Date ASC ";
+        PreparedStatement ps = util.createStatement(sql);
+        ResultSet rs = null;
         try {
-            Driver driver = new com.mysql.cj.jdbc.Driver();
-            DriverManager.registerDriver(driver);
-            String url = "jdbc:mysql://127.0.0.1:3306/javademo?serverTimezone=UTC";
-            String user = "root";
-            String password = "Myf63500976mcy";
-            conn = DriverManager.getConnection(url, user, password);
-            stmt = conn.createStatement();
-            String sql = "select id,Name,Date,QGP from Goods" + " ORDER BY Date ASC ";
-            rs = stmt.executeQuery(sql);
+            rs = ps.executeQuery(sql);
             while (rs.next()) {//以列名获取数据
                 int id = rs.getInt("id");
                 String Name = rs.getString("Name");
