@@ -4,8 +4,6 @@ import Dao.GoodsDao;
 
 import util.*;
 import entity.Goods;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 import java.util.Scanner;
 
