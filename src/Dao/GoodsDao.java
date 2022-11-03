@@ -232,7 +232,7 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
         int id=0;
         List<Goods> list = GoodsDao.SortByQGP();
         for(Goods goods:list){
-            if(goods.getName().equals(Name)){
+            if(goods.getName().equals(Name) && goods.getQGP()>=0){
                 id= goods.getId();
                 break;
             }
