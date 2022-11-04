@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
 
 /**
  * @author B20040628梅从尧
@@ -25,6 +26,9 @@ public class AddPanel extends JFrame {
     private void okButtonMouseClicked(MouseEvent e) {
         String name = (String) comboBox1.getSelectedItem();
         String date = textField2.getText();
+        if(date==null||date.length()<=0){
+            new NullPanel();
+        }
         GoodsDao dao = new GoodsDao();
         QGPSet qgpSet = new QGPSet();
         int mqgp= qgpSet.qgpSet(name);

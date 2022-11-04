@@ -1,10 +1,8 @@
 /*
- * Created by JFormDesigner on Sun Oct 30 10:23:22 HKT 2022
+ * Created by JFormDesigner on Fri Nov 04 09:53:29 HKT 2022
  */
 
 package SWindows;
-
-import Dao.GoodsDao;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -12,23 +10,14 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 /**
- * @author B20040628梅从尧
+ * @author 1
  */
-public class DeletePanel extends JFrame {
-    public DeletePanel() {
+public class NullPanel extends JFrame {
+    public NullPanel() {
         initComponents();
     }
 
     private void okButtonMouseClicked(MouseEvent e) {
-        GoodsDao dao = new GoodsDao();
-        if(textField1.getText()==null||textField1.getText().length()<=0){
-            new NullPanel();
-        }
-        int id = Integer.parseInt(textField1.getText());
-        int flag= dao.delete(id);
-        if(flag==1)
-            new SuccessPanel();
-        else new FailPanel();
         this.dispose();
     }
 
@@ -37,12 +26,10 @@ public class DeletePanel extends JFrame {
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         label1 = new JLabel();
-        textField1 = new JTextField();
         buttonBar = new JPanel();
         okButton = new JButton();
 
         //======== this ========
-        setTitle("\u8bf7\u8f93\u5165\u8d27\u7269\u4fe1\u606f");
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
@@ -54,20 +41,17 @@ public class DeletePanel extends JFrame {
             //======== contentPanel ========
             {
                 contentPanel.setLayout(new GridBagLayout());
-                ((GridBagLayout)contentPanel.getLayout()).columnWidths = new int[] {175, 120, 0};
-                ((GridBagLayout)contentPanel.getLayout()).rowHeights = new int[] {40, 0};
+                ((GridBagLayout)contentPanel.getLayout()).columnWidths = new int[] {83, 120, 0};
+                ((GridBagLayout)contentPanel.getLayout()).rowHeights = new int[] {25, 55, 0, 0};
                 ((GridBagLayout)contentPanel.getLayout()).columnWeights = new double[] {0.0, 0.0, 1.0E-4};
-                ((GridBagLayout)contentPanel.getLayout()).rowWeights = new double[] {0.0, 1.0E-4};
+                ((GridBagLayout)contentPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
 
                 //---- label1 ----
-                label1.setText("\u8bf7\u8f93\u5165\u6b32\u5220\u9664\u8d27\u7269\u7684id\uff1a");
+                label1.setText("\u8f93\u5165\u4e3a\u7a7a\u6216\u4e0d\u5b8c\u6574\uff0c\u8bf7\u91cd\u65b0\u8f93\u5165\uff01");
                 label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 3f));
-                contentPanel.add(label1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.EAST, GridBagConstraints.VERTICAL,
-                    new Insets(0, 0, 0, 5), 0, 0));
-                contentPanel.add(textField1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                contentPanel.add(label1, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0,
+                    GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 5, 0), 0, 0));
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
 
@@ -104,7 +88,6 @@ public class DeletePanel extends JFrame {
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JLabel label1;
-    private JTextField textField1;
     private JPanel buttonBar;
     private JButton okButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
