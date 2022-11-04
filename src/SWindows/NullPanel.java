@@ -30,6 +30,7 @@ public class NullPanel extends JFrame {
         okButton = new JButton();
 
         //======== this ========
+        setTitle("\u8f93\u5165\u4e3a\u7a7a");
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
