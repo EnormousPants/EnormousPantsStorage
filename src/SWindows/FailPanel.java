@@ -30,6 +30,7 @@ public class FailPanel extends JFrame {
         okButton = new JButton();
 
         //======== this ========
+        setTitle("\u63d0\u793a\u7a97\u53e3");
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
