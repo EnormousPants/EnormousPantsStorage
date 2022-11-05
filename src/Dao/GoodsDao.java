@@ -134,7 +134,7 @@ public class GoodsDao {//负责连接到数据库的数据访问对象方法集
         String sql = "select id,Name,Date,QGP from Goods" + " ORDER BY Date ASC ";
         PreparedStatement ps = util.createStatement(sql);
         ResultSet rs = null;
-        try {//未封装的Jdbc语法，下同
+        try {
             rs = ps.executeQuery(sql);
             while (rs.next()) {//以列名获取数据
                 int id = rs.getInt("id");
